@@ -21,6 +21,7 @@ export default function Home() {
           alt="Homepage Img"
           width={500}
           height={500}
+          className="animate-[move_1.5s_infinite_cubic-bezier(.46,.41,.47,.43)_alternate]"
         />
       </div>
     </div>
