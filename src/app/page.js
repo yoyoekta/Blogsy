@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <div className="flex flex-row justify-around items-center">
       <div className="flex-1 mx-6 flex flex-col justify-between space-y-8">
-        <h1 className="font-black text-[60px] leading-11 bg-clip-text text-transparent bg-gradient-to-b from-[#668FEC] to-blue-100">
+        <h1 className="font-black text-[60px] leading-11 bg-clip-text text-transparent bg-gradient-to-b from-blue-900 to-[#668FEC] dark:bg-gradient-to-b dark:from-[#668FEC] dark:to-blue-100 ">
           Build your personal brand as a developer.
         </h1>
         <p className="text-slate-400 text-[20px]">

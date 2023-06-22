@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React from "react";
+import DarkMode from "../darkmode/DarkMode";
 
 const Navbar = () => {
   const primary = [
@@ -29,7 +30,7 @@ const Navbar = () => {
     },
   ];
   return (
-    <nav className="min-w-screen bg-gray-800">
+    <nav className="min-w-screen dark:bg-gray-800 dark:text-white bg-blue-100">
       <div className="max-w-7xl mx-auto">
         <div className="relative flex items-center h-16">
           <div className="flex justify-between items-center w-full">
@@ -44,6 +45,7 @@ const Navbar = () => {
             </div>
             <div className="flex space-x-4 items-center">
               <div className="flex space-x-4">
+                <DarkMode />
                 {primary.map((item, index) => (
                   <Link href={item.url} key={index}>
                     {item.name}

@@ -4,7 +4,7 @@ import Image from 'next/image'
 const Contact = () => {
   return (
     <div className='max-w-7xl'>
-      <h1 className="font-black text-[50px] text-center leading-11 mb-2 bg-clip-text text-transparent bg-gradient-to-b from-[#668FEC] to-blue-100">
+      <h1 className="font-black text-[50px] text-center leading-11 mb-2 bg-clip-text text-transparent bg-gradient-to-b from-blue-900 to-[#668FEC] dark:bg-gradient-to-b dark:from-[#668FEC] dark:to-blue-100 ">
         Any Queries?
       </h1>
 
