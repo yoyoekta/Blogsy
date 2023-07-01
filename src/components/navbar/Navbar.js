@@ -1,6 +1,8 @@
+"use client"
 import Link from "next/link";
 import React from "react";
 import DarkMode from "../darkmode/DarkMode";
+import { signOut, useSession } from "next-auth/react";
 
 const Navbar = () => {
   const primary = [
@@ -29,6 +31,8 @@ const Navbar = () => {
       url: "/dashboard",
     },
   ];
+
+  const session = useSession();
   return (
     <nav className="min-w-screen dark:bg-gray-800 dark:text-white bg-blue-100">
       <div className="max-w-7xl mx-auto">
@@ -52,9 +56,10 @@ const Navbar = () => {
                   </Link>
                 ))}
               </div>
-              <button className="bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded-sm">
-                Logout
-              </button>
+              {session.status === "authenticated" && (
+                <button className="bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded-sm" onClick={signOut
+                }> Logout  </button>)
+              }
             </div>
           </div>
         </div>
