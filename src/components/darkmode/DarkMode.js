@@ -15,14 +15,12 @@ const DarkMode = () => {
       <div className='relative flex space-x-1 items-center border-2  rounded-2xl p-1 cursor-pointer' onClick={() => setTheme('light')}>
           <div><FaMoon/></div>
           <div className='text-sm'><FaSun/></div>
-          {console.log(theme)}
           <div className='absolute rounded-full bg-blue-500 w-4 h-4' style={theme === 'light' ? {left: "0px"} : {right:"4px"}}></div>
       </div>
     ) : 
       <div className='relative flex space-x-1 items-center border-2 border-black rounded-2xl p-1 cursor-pointer' onClick={()=>setTheme('dark')}>
       <div><FaMoon/></div>
       <div className='text-sm'><FaSun/></div>
-      {console.log(theme)}
       <div className='absolute rounded-full bg-blue-500 w-4 h-4' style={theme === 'light' ? {left: "0px"} : {right:"4px"}}></div>
 </div>
   } else {
