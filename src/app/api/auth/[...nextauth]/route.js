@@ -3,17 +3,17 @@ import NextAuth from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
 import CredentialsProvider from "next-auth/providers/credentials"
 import connectDB from "@/utils/db";
-import { NextResponse } from "next/server";
+import bcrypt from "bcrypt";
 
 const handle =  NextAuth({
   providers: [
-    GoogleProvider({
-      clientId: process.env.GOOGLE_ID,
-      clientSecret: process.env.GOOGLE_SECRET,
-    }),
     CredentialsProvider({
       id: 'credentials',
-      name: 'Sign in with Email and Password',
+      name: 'Credentials',
+      credentials: {
+        email: { label: "Email", type: "email", placeholder: "Email" },
+        password: { label: "Password", type: "password", placeholder: "Password" }
+      },
       async authorize(credentials) {
 
         await connectDB();
@@ -24,7 +24,6 @@ const handle =  NextAuth({
           if(user){
             const isMatch = await bcrypt.compare(credentials.password, user.password);
             if(isMatch){
-              console.log("Found user")
               return user;
             }
             else{
@@ -36,21 +35,27 @@ const handle =  NextAuth({
           }
         }
         catch(err){
-          return new NextResponse(err.message, {status: 500})
+          throw new Error(err)
         }
       },
     }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_ID,
+      clientSecret: process.env.GOOGLE_SECRET,
+    }),
   ],
   callbacks: {
-    jwt: async ({ token, user }) => {
-        user && (token.user = user)
-        return token
+    async session({ session, token }) {
+      session.user = token.user;
+      return session;
     },
-    session: async ({ session, token }) => {
-        session.user = token.user
-        return session
-    }
-  }
+    async jwt({ token, user }) {
+      if (user) {
+        token.user = user;
+      }
+      return token;
+    },
+  },
 })
 
 export {handle as GET, handle as POST} 
