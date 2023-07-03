@@ -2,13 +2,10 @@
 
 import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/navigation';
-import React, { useState } from 'react'
 
 const Login = () => {
 
-  const [error, setError] = useState("");
   const router = useRouter();
-  const callbackUrl = "/dashboard";
   const handleSubmit = async (e) => {
     e.preventDefault();
     const email = e.target[0].value;
@@ -16,9 +13,9 @@ const Login = () => {
 
     const res = await signIn('credentials', {email, password, redirect: false})
     if (res?.error) {
-      setError(res.error);
+      console.log(res.error);
     } else {
-      router.push(callbackUrl);
+      router?.push("/dashboard");
     }
   }
 
