@@ -16,7 +16,9 @@ const Blog = async() => {
   const data = await getPosts();
   return (
     <div className='max-w-7xl'>
-      <h1 className='font-black text-2xl text-center my-4'>Curated Blogs for you</h1>
+      <h1 className="font-black text-[50px] text-center leading-11 mb-2 bg-clip-text text-transparent bg-gradient-to-b from-blue-900 to-[#668FEC] dark:bg-gradient-to-b dark:from-[#668FEC] dark:to-blue-100 ">
+        Curated Blogs for you
+      </h1>
 
       {data.map((post) => (
         <Link href={`/blog/${post._id}`} key={post._id}>
