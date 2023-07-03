@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -11,9 +12,11 @@ export default function Home() {
           Turning your ideas into reality by building projects and sharing them
           with the world.
         </p>
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-48">
-          Show your work
-        </button>
+        <Link href="/dashboard">
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-48">
+            Show your work
+          </button>
+        </Link>
       </div>
       <div className="flex-1 flex justify-end">
         <Image
